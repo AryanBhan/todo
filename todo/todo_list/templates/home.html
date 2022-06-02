@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <small><sup>X</sup></small>
+            </button>
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% if all_item %}
+    <table class="table table-borderless" >
+    {% for things in all_item %}
+    {% if things.completed %}
+    <tr>
+        
+        <td class="striker text-center" >
+            
+                
+               <a href="{%url 'edit' things.id%}" style="text-decoration:none ;color:black;padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+               font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;"> {{things.item}}</a>
+           
+        </td>
+                
+        <td class="text-center">
+            
+                <a href="{%url 'uncross' things.id%}" onMouseOver="this.style.color='#0000FF'"
+                onMouseOut="this.style.color='#000000'" style="text-decoration:none;color:black;border: 3px solid rgba(2, 2, 2, 0.917);padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+                font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;">Uncross</a>
+            
+        </td>
+        <td class="text-center " ><a href="{%url 'delete' things.id %}" onMouseOver="this.style.color='#FF0000'"
+            onMouseOut="this.style.color='#000000'" style="text-decoration:none;color:black;border: 3px solid rgba(2, 2, 2, 0.917);padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+            font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;">Delete</a></td>
+    </tr>
+   {% else %}
+    <tr>
+        
+        <td class="text-center"> 
+           
+                
+                <a href="{%url 'edit' things.id%}" style="text-decoration:none ;color:black;padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+                font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;"> {{things.item}}</a>
+            
+        </td>
+        <td class="text-center bb">
+           
+                
+                <a href="{%url 'cross_off' things.id%}" onMouseOver="this.style.color='#0000FF'"
+                onMouseOut="this.style.color='#000000'" style="text-decoration:none;color:black;border: 3px solid rgba(2, 2, 2, 0.917);padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+                font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;">Cross Off
+                </a> 
+            
+        </td>
+        <td class="text-center bd"><a href="{%url 'delete' things.id %}" onMouseOver="this.style.color='#FF0000'"
+            onMouseOut="this.style.color='#000000'" style="text-decoration:none;color:black;border: 3px solid rgba(2, 2, 2, 0.917);padding: 5px;border-radius: 6px;font-family: 'Caveat', cursive;
+            font-family: 'Josefin Sans', sans-serif;text-transform: uppercase;">Delete</a> </td>
+    </tr>
+    {% endif %}
+    
+    {% endfor %}
+</table>
+    
+    {% endif %}
+{% endblock content %}

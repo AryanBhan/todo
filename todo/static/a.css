@@ -1,0 +1,7 @@
+.striker{
+    text-align: center;
+    text-decoration:line-through;
+}
+.hh a:hover{
+    color: red;
+}
